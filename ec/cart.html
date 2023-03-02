@@ -31,77 +31,10 @@
                     <th scope="col">Ürün</th>
                     <th scope="col">Ürün Adeti</th>
                     <th scope="col">Fiyat</th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
-                <tbody class="border-top border-dark">
-                  <tr>
-                    <th scope="row" class="align-middle">24132</th>
-                    <td>
-                      <img width="64" height="64" src="https://new.axilthemes.com/demo/template/etrade/assets/images/product/fashion/product-17.png" alt="">
-                      <span>&ensp;MODA Süper Oversize Basic Unisex Tshirt</span>
-                    </td>
-                    <td>
-                      <div>
-                        <div class="input-group p-3">
-                          <button class="btn border border-secondary">-</button>
-                          <button class="btn border border-secondary">3</button>
-                          <button class="btn border border-secondary">+</button>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="align-middle text-dark">$30</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="align-middle">2432</th>
-                    <td>
-                      <img width="64" height="64" src="https://new.axilthemes.com/demo/template/etrade/assets/images/product/fashion/product-18.png" alt="">
-                      <span>&ensp;Unisex Düz Kırmızı Kapüşonlu Sweatshirt kapsonblackjack</span>
-                    </td>
-                    <td>
-                      <div>
-                        <div class="input-group p-3">
-                          <button class="btn border border-secondary">-</button>
-                          <button class="btn border border-secondary">1</button>
-                          <button class="btn border border-secondary">+</button>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="align-middle text-dark">$50</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="align-middle">23123</th>
-                    <td>
-                      <img width="64" height="64" src="https://new.axilthemes.com/demo/template/etrade/assets/images/product/fashion/product-8.png" alt="">
-                      <span>&ensp;Kapüşonlu Suni Yünlü Ceket</span>
-                    </td>
-                    <td>
-                      <div>
-                        <div class="input-group p-3">
-                          <button class="btn border border-secondary">-</button>
-                          <button class="btn border border-secondary">2</button>
-                          <button class="btn border border-secondary">+</button>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="align-middle text-dark">$120</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="align-middle">23124</th>
-                    <td>
-                      <img width="64" height="64" src="https://new.axilthemes.com/demo/template/etrade/assets/images/product/fashion/product-1.png" alt="">
-                      <span>&ensp;Sade basic gri tshirt</span>
-                    </td>
-                    <td>
-                      <div>
-                        <div class="input-group p-3">
-                          <button class="btn border border-secondary">-</button>
-                          <button class="btn border border-secondary">2</button>
-                          <button class="btn border border-secondary">+</button>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="align-middle text-dark">$20</td>
-                  </tr>
+                <tbody class="border-top border-dark" id="cart">
                 </tbody>
               </table>
             </div>
@@ -110,7 +43,7 @@
                 <h2 class="mb-3">Sepet Tutarı</h2>
                 <div class="border-top border-dark p-2">
                   <span class="float-start">Toplam</span>
-                  <span class="float-end">$220</span>
+                  <span class="float-end" id="totalprice">0$</span>
                 </div>
                 <button class="btn btn-dark w-100 mt-3">Ödemeye Geç &ensp; <i class="fa fa-arrow-right" aria-hidden="true"></i>
                 </button>
@@ -122,7 +55,6 @@
           <i class="fa fa-arrow-left" aria-hidden="true"></i> &ensp;Alışverişe Dön </button>
       </div>
     </section>
-    <script src="main.js"></script>
     <script src="cart.js"></script>
   </body>
 </html>
