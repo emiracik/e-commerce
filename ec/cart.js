@@ -12,12 +12,10 @@ class Product {
   }
 }
 
-// Class that holds a collection of players and properties and functions for the group
 class productList {
   constructor(){
     this.productList = []
   }
-  // create a new player and save it in the collection
   newProduct(product){
     let p = new Product(product)
     this.productList.push(p)
@@ -26,12 +24,10 @@ class productList {
   get allProduct(){
     return this.productList
   }
-  // this could include summary stats like average score, etc. For simplicy, just the count for now
   get numberOfProduct(){
       return this.productList.length
   }
 }
-var totalPrice = 0;
 var productlist = new productList();
 
 function productCreate(productItems1) {
@@ -89,6 +85,19 @@ function productCreate(productItems1) {
 
 }
 
+function setPrice(){
+  var totalPrice = 0;
+
+  for (const element of this.productlist.allProduct) {
+    var product = element.product;
+
+    totalPrice += parseInt(product.productPrice) * parseInt(product.productPiece);
+
+    document.getElementById("totalprice").innerText = totalPrice + "$";
+  }
+ 
+}
+
 function setProduct(){
 
   var listItem = localStorage.getItem('product') ? JSON.parse(localStorage.getItem('product')) : '';
@@ -96,14 +105,14 @@ function setProduct(){
   for (const key in listItem) {
     var product = listItem[key].product
 
-    totalPrice += parseInt(product.productPrice) * parseInt(product.productPiece);
-
     var tr = productCreate(product);
 
     document.getElementById("cart").appendChild(tr);
-    document.getElementById("totalprice").innerText = totalPrice + "$";
     document.getElementById("cart-lenght").innerText = this.productlist.numberOfProduct;
+
   }
+  setPrice();
+
 }
 
 window.addEventListener('load', (event) => {
