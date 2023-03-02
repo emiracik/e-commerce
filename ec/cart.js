@@ -1,4 +1,4 @@
-class productItems1{
+class productItems{
   productCode = "";
   productImageUrl = "";
   productAlt = "";
@@ -6,8 +6,33 @@ class productItems1{
   productPiece= "";
   productPrice= "";
 }
+class Product {
+  constructor(product) {
+      this.product = product;
+  }
+}
 
+// Class that holds a collection of players and properties and functions for the group
+class productList {
+  constructor(){
+    this.productList = []
+  }
+  // create a new player and save it in the collection
+  newProduct(product){
+    let p = new Product(product)
+    this.productList.push(p)
+    return p
+  }
+  get allProduct(){
+    return this.productList
+  }
+  // this could include summary stats like average score, etc. For simplicy, just the count for now
+  get numberOfProduct(){
+      return this.productList.length
+  }
+}
 var totalPrice = 0;
+var productlist = new productList();
 
 function productCreate(productItems1) {
    var buttonFirst = document.createElement("button");
@@ -64,22 +89,55 @@ function productCreate(productItems1) {
 
 }
 
-function cartAppend(){
+function setProduct(){
 
- var c = new productItems1();
- c.productCode = "15432";
- c.productImageUrl = "https://new.axilthemes.com/demo/template/etrade/assets/images/product/fashion/product-17.png";
- c.productAlt = "Fashion";
- c.productName = "MODA Süper Oversize Basic Unisex";
- c.productPiece = "1";
- c.productPrice = "10$";
+  var listItem = localStorage.getItem('product') ? JSON.parse(localStorage.getItem('product')) : '';
 
- totalPrice += parseInt(c.productPrice) * parseInt(c.productPiece);
+  for (const key in listItem) {
+    var product = listItem[key].product
 
+    totalPrice += parseInt(product.productPrice) * parseInt(product.productPiece);
 
- var tr = productCreate(c);
+    var tr = productCreate(product);
 
- document.getElementById("cart").appendChild(tr);
-
- document.getElementById("totalprice").innerText = totalPrice + "$";
+    document.getElementById("cart").appendChild(tr);
+    document.getElementById("totalprice").innerText = totalPrice + "$";
+    document.getElementById("cart-lenght").innerText = this.productlist.numberOfProduct;
+  }
 }
+
+window.addEventListener('load', (event) => {
+
+    var product1 = new productItems();
+    product1.productCode = "15432";
+    product1.productImageUrl = "https://new.axilthemes.com/demo/template/etrade/assets/images/product/fashion/product-17.png";
+    product1.productAlt = "Fashion";
+    product1.productName = "MODA Süper Oversize Basic Unisex";
+    product1.productPiece = "1";
+    product1.productPrice = "10$";
+
+    var product2 = new productItems();
+    product2.productCode = "15433";
+    product2.productImageUrl = "https://new.axilthemes.com/demo/template/etrade/assets/images/product/fashion/product-18.png";
+    product2.productAlt = "Fashion";
+    product2.productName = "MODA Süper Oversize Basic";
+    product2.productPiece = "2";
+    product2.productPrice = "20$";
+
+    var product3 = new productItems();
+    product3.productCode = "15434";
+    product3.productImageUrl = "https://new.axilthemes.com/demo/template/etrade/assets/images/product/fashion/product-19.png";
+    product3.productAlt = "Fashion";
+    product3.productName = "MODA Süper Oversize ";
+    product3.productPiece = "5";
+    product3.productPrice = "30$";
+
+    this.productlist.newProduct(product1);
+    this.productlist.newProduct(product2);
+    this.productlist.newProduct(product3);
+
+    localStorage.setItem('product', JSON.stringify(this.productlist.allProduct));
+
+    setProduct();
+
+});
